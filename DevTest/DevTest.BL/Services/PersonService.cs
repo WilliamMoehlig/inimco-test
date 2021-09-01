@@ -17,6 +17,8 @@ namespace DevTest.BL.Services
 
         public CreatePersonResponse Create(CreatePersonRequest personRequest)
         {
+            // Introduce mapper
+
             System.Collections.Generic.List<SocialSkill> socialSkills = new System.Collections.Generic.List<SocialSkill>();
 
             foreach (var socialSkill in personRequest.SocialSkills)

@@ -1,10 +1,23 @@
 ﻿using DevTest.Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace DevTest.DAL
 {
     public class DevTestContext : DbContext
     {
+        private readonly string _connectionString;
+
+        public DevTestContext()
+        {
+
+        }
+
+        public DevTestContext(IConfiguration configuration)
+        {
+            _connectionString = configuration.GetConnectionString("DevTestDatabase");
+        }
+
         public DbSet<Person> Persons { get; set; }
         public DbSet<SocialAccount> SocialAccounts { get; set; }
         public DbSet<SocialSkill> SocialSkills { get; set; }
@@ -29,7 +42,7 @@ namespace DevTest.DAL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=LAPTOP-20RGEUMC;Initial Catalog=DevTest;Integrated Security=SSPI;");
+            optionsBuilder.UseSqlServer(_connectionString);
         }
     }
 }
