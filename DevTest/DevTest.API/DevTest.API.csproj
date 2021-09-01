@@ -8,5 +8,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Module\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DevTest.BL\DevTest.BL.csproj" />
+    <ProjectReference Include="..\DevTest.DAL\DevTest.DAL.csproj" />
+  </ItemGroup>
+
 
 </Project>
