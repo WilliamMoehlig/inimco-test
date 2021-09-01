@@ -1,4 +1,5 @@
-﻿using DevTest.BL.Interfaces;
+﻿using DevTest.BL.Infrastructure;
+using DevTest.BL.Services;
 using DevTest.DAL;
 using DevTest.DAL.Repositories;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ namespace DevTest.API.Extensions
         {
             services.TryAddSingleton<DevTestContext>();
             services.TryAddScoped<IPersonRepository, PersonRepository>();
+            services.TryAddScoped<IPersonService, PersonService>();
 
             return services;
         }

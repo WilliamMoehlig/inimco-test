@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace DevTest.BL.Interfaces
+namespace DevTest.BL.Infrastructure
 {
     public interface IPersonRepository
     {
@@ -13,6 +13,6 @@ namespace DevTest.BL.Interfaces
         void Add(Person person);
         void Edit(Person person);
         void Delete(Person person);
-        void SaveChanges();
+        void Save();
     }
 }

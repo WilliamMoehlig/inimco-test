@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DevTest.Domain\DevTest.Domain.csproj" />
+    <PackageReference Include="System.Text.Json" Version="5.0.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="NewFolder\" />
+    <ProjectReference Include="..\DevTest.Domain\DevTest.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿using DevTest.BL.Interfaces;
+﻿using DevTest.BL.Infrastructure;
 using DevTest.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -55,7 +55,7 @@ namespace DevTest.DAL.Repositories
             _context.Persons.Remove(person);
         }
 
-        public void SaveChanges()
+        public void Save()
         {
             _context.SaveChanges();
         }

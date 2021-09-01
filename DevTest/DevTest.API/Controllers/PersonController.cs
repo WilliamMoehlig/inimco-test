@@ -1,8 +1,7 @@
 ﻿using DevTest.API.Attributes;
-using DevTest.BL.Interfaces;
-using DevTest.Domain;
+using DevTest.BL.Infrastructure;
+using DevTest.BL.Persons.Create;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace DevTest.API.Controllers
 {
@@ -11,26 +10,16 @@ namespace DevTest.API.Controllers
     [Route("[controller]")]
     public class PersonController : ControllerBase
     {
-        private IPersonRepository _repository;
-        public PersonController(IPersonRepository repository)
+        private readonly IPersonService _personService;
+        public PersonController(IPersonService personService)
         {
-            _repository = repository;
-        }
-
-        [HttpGet]
-        public IEnumerable<Person> Get()
-        {
-            return _repository.GetAll();
+            _personService = personService;
         }
 
         [HttpPost]
-        public IEnumerable<Person> Add(Person person)
+        public CreatePersonResponse Add(CreatePersonRequest command)
         {
-            _repository.Add(person);
-
-            _repository.SaveChanges();
-
-            return _repository.GetAll();
+            return _personService.Create(command);
         }
     }
 }
