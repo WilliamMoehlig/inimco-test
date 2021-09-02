@@ -39,7 +39,7 @@ namespace DevTest.BL.Services
                 return new CreatePersonResponse
                 {
                     NumberOfVowels = fullName.CountVowels(),
-                    NumberOfConstenants = fullName.CountConsonants(),
+                    NumberOfConsonants = fullName.CountConsonants(),
                     Name = fullName,
                     ReverseName = fullName.Reverse(),
                     JsonFormat = JsonSerializer.Serialize(personRequest)

@@ -16,11 +16,12 @@ const PersonComponent = () => {
   const [lastName, setLastName] = useState<string>("");
   const [socialSkills, setSocialSkills] = useState<string[]>([]);
   const [socialAccounts, setSocialAccounts] = useState<SocialAccount[]>([]);
+  const [personResponse, setPersonResponse] = useState<IPersonResponse>();
 
   const PostPerson = async (request: IPersonRequest) => {
     const { data }: AxiosResponse<IPersonResponse> = await axios.post("https://localhost:44392/person", request, config);
 
-    alert(data);
+    setPersonResponse(data);
   }
 
   const handleSubmit = async (evt: any) => {
@@ -57,6 +58,14 @@ const PersonComponent = () => {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <label>
+        The number of VOWELS: {personResponse?.numberOfVowels} <br />
+        The number of CONSONANTS: {personResponse?.numberOfConsonants} <br />
+        The firstname + lastname entered: {personResponse?.name} <br />
+        The reverse version of the firstname and lastname: {personResponse?.reverseName} <br />
+        The JSON format of the entire object: <br />
+        {personResponse?.jsonFormat} <br />
+      </label>
     </>
   )
 }

@@ -1,7 +1,7 @@
 export interface IPersonResponse {
-  NumberOfVowels: number;
-  NumberOfConsonants: number;
-  Name: string;
-  NameReverse: string;
-  JsonFormat: string;
+  numberOfVowels: number;
+  numberOfConsonants: number;
+  name: string;
+  reverseName: string;
+  jsonFormat: string;
 }
