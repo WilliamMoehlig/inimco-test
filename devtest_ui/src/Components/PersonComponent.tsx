@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 import { IPersonResponse } from "../Interfaces/IPersonResponse";
@@ -12,8 +12,10 @@ const PersonComponent = () => {
     }
   }
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [socialSkills, setSocialSkills] = useState<string[]>([]);
+  const [socialAccounts, setSocialAccounts] = useState<SocialAccount[]>([]);
 
   const PostPerson = async (request: IPersonRequest) => {
     const { data }: AxiosResponse<IPersonResponse> = await axios.post("https://localhost:44392/person", request, config);
@@ -23,9 +25,6 @@ const PersonComponent = () => {
 
   const handleSubmit = async (evt: any) => {
     evt.preventDefault();
-
-    var socialSkills: string[] = ["nice", "friendly"];
-    var socialAccounts: SocialAccount[] = [{ Type: "LinkedIn", Address: "linkedin.com/williammoehlig" }]
 
     var request: IPersonRequest = {
       FirstName: firstName,
