@@ -5,7 +5,7 @@ export interface IPersonRequest {
   SocialAccounts: SocialAccount[];
 }
 
-export interface SocialAccount {
+interface SocialAccount {
   Type: string;
   Address: string;
 }
