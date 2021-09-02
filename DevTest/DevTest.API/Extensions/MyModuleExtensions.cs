@@ -1,4 +1,4 @@
-﻿using DevTest.BL.Infrastructure;
+﻿using DevTest.BL.Persons.Interfaces;
 using DevTest.BL.Services;
 using DevTest.DAL;
 using DevTest.DAL.Repositories;

@@ -1,10 +1,11 @@
-﻿using DevTest.BL.Infrastructure;
+﻿using DevTest.BL.Persons.Interfaces;
 using DevTest.Domain;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace DevTest.DAL.Repositories
 {
@@ -16,12 +17,12 @@ namespace DevTest.DAL.Repositories
             _context = context;
         }
 
-        public IEnumerable<Person> GetAll()
+        public Task<List<Person>> GetAll()
         {
             return _context.Persons
                 .Include(p => p.SocialAccounts)
                 .Include(p => p.SocialSkills)
-                .ToList();
+                .ToListAsync();
         }
 
         public IEnumerable<Person> FindBy(Expression<Func<Person, bool>> criteria)
@@ -32,12 +33,12 @@ namespace DevTest.DAL.Repositories
                 .Where(criteria);
         }
 
-        public Person FindById(int id)
+        public Task<Person> FindById(int id)
         {
             return _context.Persons
                 .Include(p => p.SocialAccounts)
                 .Include(p => p.SocialSkills)
-                .SingleOrDefault(x => x.PersonId == id);
+                .SingleOrDefaultAsync(x => x.PersonId == id);
         }
 
         public void Add(Person person)
@@ -55,9 +56,9 @@ namespace DevTest.DAL.Repositories
             _context.Persons.Remove(person);
         }
 
-        public void Save()
+        public async Task Save()
         {
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }

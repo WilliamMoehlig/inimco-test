@@ -1,7 +1,8 @@
 ﻿using DevTest.API.Attributes;
-using DevTest.BL.Infrastructure;
-using DevTest.BL.Persons.Create;
+using DevTest.BL.Persons.Interfaces;
+using DevTest.BL.Persons.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DevTest.API.Controllers
 {
@@ -17,9 +18,9 @@ namespace DevTest.API.Controllers
         }
 
         [HttpPost]
-        public CreatePersonResponse Add(CreatePersonRequest command)
+        public async Task<CreatePersonResponse> Add(CreatePersonRequest command)
         {
-            return _personService.Create(command);
+            return await _personService.CreateAsync(command);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace DevTest.BL.Persons.Create
+﻿namespace DevTest.BL.Persons.Models
 {
     public class CreatePersonResponse
     {

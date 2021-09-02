@@ -2,17 +2,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
-namespace DevTest.BL.Infrastructure
+namespace DevTest.BL.Persons.Interfaces
 {
     public interface IPersonRepository
     {
-        IEnumerable<Person> GetAll();
+        Task<List<Person>> GetAll();
         IEnumerable<Person> FindBy(Expression<Func<Person, bool>> criteria);
-        Person FindById(int id);
+        Task<Person> FindById(int id);
         void Add(Person person);
         void Edit(Person person);
         void Delete(Person person);
-        void Save();
+        Task Save();
     }
 }

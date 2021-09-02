@@ -2,7 +2,7 @@
 using DevTest.BL.Extensions;
 using FluentAssertions;
 
-namespace DevTest.Tests.Unit.Extensions
+namespace DevTest.Tests.Unit.Extensions.String
 {
     public class When_counting_vowels
     {
@@ -11,7 +11,7 @@ namespace DevTest.Tests.Unit.Extensions
         [InlineData("This is a long sentence", 7)]
         [InlineData("i", 1)]
         [InlineData("p",0)]
-        public void it_returns_correct_amount(string sentence, int expectedResult)
+        public void It_returns_correct_amount(string sentence, int expectedResult)
         {
             sentence.CountVowels().Should().Be(expectedResult);
         }

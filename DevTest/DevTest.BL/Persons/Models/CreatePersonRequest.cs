@@ -1,6 +1,6 @@
-﻿namespace DevTest.BL.Persons.Create
+﻿namespace DevTest.BL.Persons.Models
 {
-    public class SocialAccounts
+    public class SocialAccount
     {
         public string Type { get; set; }
         public string Address { get; set; }
@@ -11,6 +11,6 @@
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string[] SocialSkills { get; set; }
-        public SocialAccounts[] SocialAccounts { get; set; }
+        public SocialAccount[] SocialAccounts { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using DevTest.Tests.Utilities;
 using FluentAssertions;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace DevTest.Tests.Integration
@@ -43,7 +44,7 @@ namespace DevTest.Tests.Integration
                 };
 
                 repository.Add(person);
-                repository.Save();
+                repository.Save().GetAwaiter().GetResult();
 
 
                 var contextPerson = datacontext.Set<Person>().Find(person.PersonId);

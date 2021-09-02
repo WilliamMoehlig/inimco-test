@@ -7,14 +7,13 @@ namespace DevTest.Migrations
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             var serviceProvider = CreateServices();
 
-            using (var scope = serviceProvider.CreateScope())
-            {
-                UpdateDatabase(scope.ServiceProvider);
-            }
+            using var scope = serviceProvider.CreateScope();
+
+            UpdateDatabase(scope.ServiceProvider);
         }
 
         private static IServiceProvider CreateServices()
@@ -24,7 +23,7 @@ namespace DevTest.Migrations
                 .ConfigureRunner(rb => rb
                     .AddSqlServer()
                     .WithGlobalConnectionString("Data Source=LAPTOP-20RGEUMC;Initial Catalog=DevTest;Integrated Security=SSPI;")
-                    .ScanIn(typeof(M002_AddSocialSkillsTable).Assembly).For.Migrations())
+                    .ScanIn(typeof(M001_AddPersonTable).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole())
                 .BuildServiceProvider(false);
         }
