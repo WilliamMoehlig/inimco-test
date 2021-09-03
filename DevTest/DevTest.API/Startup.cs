@@ -57,6 +57,7 @@ namespace DevTest.API
                  });
             });
 
+            // DI configuration
             services.AddDevTestModule();
 
             services.AddAutoMapper(typeof(PersonMappingProfile));
