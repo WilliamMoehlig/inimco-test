@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
-import { Form } from "react-final-form";
+import { Form, Field } from "react-final-form";
 import arrayMutators from "final-form-arrays";
 
 import { IPersonResponse } from "../Interfaces/IPersonResponse";
@@ -39,7 +39,17 @@ const PersonComponent = () => {
     await PostPerson(request);
   }
 
-  const enabled: boolean = firstName.length > 0 && lastName.length > 0;
+  const enabled: boolean = firstName?.length > 0 && lastName?.length > 0;
+  
+  const firstNameRequired =  (value : string) => {
+    setFirstName(value);
+    return value ? undefined : "Required"
+  };
+
+  const lastNameRequired =  (value : string) => {
+    setLastName(value);
+    return value ? undefined : "Required"
+  };
 
   return (
     <>
@@ -56,24 +66,24 @@ const PersonComponent = () => {
         }) => {
           return (
             <form onSubmit={handleSubmit}>
-              <div className="mb-3">
-                <label htmlFor="firstname" className="form-label">
-                  First Name:
-                </label>
-                <input id="firstname" className="form-control"
-                  type="text"
-                  value={firstName}
-                  onChange={e => setFirstName(e.target.value)}
-                />
-              </div>
-              <label htmlFor="lastname" className="form-label">
-                Last Name:
-              </label>
-              <input id="lastname" className="form-control"
-                type="text"
-                value={lastName}
-                onChange={e => setLastName(e.target.value)}
-              />
+              <Field name="firstname" validate={firstNameRequired}>
+                {({ input, meta }) => (
+                  <div>
+                    <label>First Name:</label>
+                    <input {...input} type="text" className="form-control" value={firstName} />
+                    {meta.error && <span className="error">{meta.error}</span>}
+                  </div>
+                )}
+              </Field>
+              <Field name="lastname" validate={lastNameRequired}>
+                {({ input, meta }) => (
+                  <div>
+                    <label>Last Name:</label>
+                    <input {...input} type="text" className="form-control" value={lastName} />
+                    {meta.error && <span className="error">{meta.error}</span>}
+                  </div>
+                )}
+              </Field>
               <div className="buttons">
                 <button className="btn btn-outline-primary"
                   type="button"

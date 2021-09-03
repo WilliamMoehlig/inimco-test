@@ -28,8 +28,13 @@
   color: #61dafb;
 }
 
-.buttons{
+.buttons {
   margin: 20px;
+}
+
+.error {
+  color: red;
+  font-style: italic;
 }
 
 @keyframes App-logo-spin {
